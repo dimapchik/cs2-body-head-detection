@@ -1,0 +1,5 @@
+mlflow_tracking_uri: "http://127.0.0.1:8080"
+experiment_name: "yolo-cs2-detector"
+log_dir: "../plots"
+csv_log_dir: "csv_logs"
+tb_log_dir: "tb_logs"
