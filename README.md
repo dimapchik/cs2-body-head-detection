@@ -1,4 +1,4 @@
-# Clothing Classifier
+# Сounter Strike 2 Body and head detection
 
 **Прокопьев Дмитрий Сергеевич**
 
