@@ -1,0 +1,2 @@
+weights_path: model_weights/yolov8n.onnx
+save_dir: ../inference_results

@@ -14,13 +14,15 @@ def setup_mlflow(
     mlflow.set_experiment(experiment_name)
 
 
-def export_to_onnx(model, output_path: str, imgsz: int = 640):
+def export_to_onnx(model, cfg: DictConfig):
+    imgsz = cfg.export.imgsz
+    project = cfg.export.onnx_output_dir
     try:
-        model.export(format="onnx", imgsz=imgsz)
+        model.export(format="onnx", imgsz=imgsz, project=project)
         possible = list(Path(".").rglob("*.onnx"))
         if possible:
             src = possible[-1]
-            dst = Path(output_path)
+            dst = Path(cfg.export.onnx_output_dir) / src.name
             dst.parent.mkdir(parents=True, exist_ok=True)
             src.replace(dst)
             print(f"ONNX exported to {dst}")

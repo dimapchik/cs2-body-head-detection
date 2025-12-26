@@ -52,12 +52,12 @@ def main(config_path: str = "../configs", config_name: str = "config") -> None:
         workers=cfg.training.num_workers,
     )
 
-    out_onnx = cfg.export.onnx_output_path
-    print(f"Exporting trained model to ONNX: {out_onnx}")
-    export_to_onnx(model, out_onnx)
+    out_onnx_dir = cfg.export.onnx_output_dir
+    print(f"Exporting trained model to ONNX: {out_onnx_dir}")
+    export_to_onnx(model, cfg)
 
     try:
-        mlflow.log_artifact(out_onnx)
+        mlflow.log_artifact(out_onnx_dir)
     except Exception:
         print("Failed to log onnx to mlflow (file may be missing)")
 
