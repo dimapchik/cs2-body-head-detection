@@ -1,7 +1,9 @@
 import shutil
+import subprocess
 from pathlib import Path
 
 import kagglehub
+from git import Repo
 from omegaconf import DictConfig
 
 
@@ -13,20 +15,20 @@ def ensure_data(cfg: DictConfig) -> None:
 
     print("Data not found locally. Attempting to pull via DVC...")
     pulled = False
-    # try:
-    #     if Repo is not None:
-    #         repo = Repo('.')
-    #         repo.pull()
-    #         pulled = True
-    # except Exception as e:
-    #     print("DVC Python API pull failed:", e)
+    try:
+        if Repo is not None:
+            repo = Repo(".")
+            repo.pull()
+            pulled = True
+    except Exception as e:
+        print("DVC Python API pull failed:", e)
 
-    # if not pulled:
-    #     ret = subprocess.run(["dvc", "pull"], cwd=Path.cwd())
-    #     if ret.returncode == 0:
-    #         pulled = True
-    #     else:
-    #         print("dvc pull failed (exit code", ret.returncode, ")")
+    if not pulled:
+        ret = subprocess.run(["dvc", "pull"], cwd=Path.cwd())
+        if ret.returncode == 0:
+            pulled = True
+        else:
+            print("dvc pull failed (exit code", ret.returncode, ")")
 
     if not pulled:
         print("Falling back to Kaggle download...")

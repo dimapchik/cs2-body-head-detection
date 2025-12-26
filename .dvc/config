@@ -1,4 +1,6 @@
-['remote "local"']
-    url = .dvc/cache
 [core]
-    remote = local
+    remote = localstore
+['remote "local"']
+    url = /home/d1m4p/data
+['remote "localstore"']
+    url = /tmp/dvc-storage

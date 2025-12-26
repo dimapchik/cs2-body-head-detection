@@ -52,7 +52,7 @@ def ensure_yolo_weights(cfg: DictConfig) -> str:
     try:
         Path(weights_dir).mkdir(parents=True, exist_ok=True)
 
-        _ = YOLO(f"{weights_path}/yolov8{model_size}.pt")
+        _ = YOLO(f"{weights_path}")
 
         ultralytics_cache = Path.home() / ".cache" / "ultralytics" / "weights"
 
@@ -64,7 +64,7 @@ def ensure_yolo_weights(cfg: DictConfig) -> str:
                 return str(weights_path)
 
         print(f"yolov8{model_size}.pt loaded; using from Ultralytics cache")
-        return f"yolov8{model_size}.pt"
+        return f"{weights_path}"
 
     except Exception as e:
         print(f"Failed to download YOLOv8 weights: {e}")
