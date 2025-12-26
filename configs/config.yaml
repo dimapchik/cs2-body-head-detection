@@ -4,12 +4,7 @@ defaults:
   - training: default
   - logging: default
   - export: default
+  - model: default
 
 data_yaml: ../configs/data/data.yaml
 dataset_ref: merfarukgnaydn/counter-strike-2-body-and-head-classification
-
-model:
-  type: yolov8
-  size: n
-  num_classes: 5
-  weights_dir: model_weights

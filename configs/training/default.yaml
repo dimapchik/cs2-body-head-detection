@@ -4,9 +4,3 @@ epochs: 25
 lr: 0.001
 num_workers: 4
 seed: 42
-
-lightning:
-  max_epochs: 25
-  accelerator: auto
-  devices: auto
-  precision: 32

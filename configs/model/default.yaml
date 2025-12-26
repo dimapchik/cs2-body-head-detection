@@ -1,0 +1,4 @@
+type: yolov8
+size: n
+num_classes: 5
+weights_dir: model_weights
